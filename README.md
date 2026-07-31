@@ -3,7 +3,7 @@
 **Give your AI agent a residential IP.** An [MCP](https://modelcontextprotocol.io)
 server that lets Claude Code, Claude Desktop, Cursor or any other MCP client route
 web requests through [NodeMaven](https://nodemaven.com) residential and mobile
-proxies — pick an exit country, verify what the target site sees, and pull the page.
+proxies: pick an exit country, verify what the target site sees, and pull the page.
 
 ```
 you:    read this product page the way a shopper in Munich sees it
@@ -19,7 +19,7 @@ Unofficial, community-built, MIT licensed. Not affiliated with NodeMaven.
 
 Agents are increasingly the thing doing the browsing, and they hit the same wall
 everyone else does: datacenter IPs get blocked, and prices, stock and search
-results change by geography. The proxy is already the fix — it just isn't
+results change by geography. The proxy is already the fix - it just isn't
 reachable from inside the agent's session.
 
 This server closes that gap in five tools. Nothing here needs a scraping DSL: the
@@ -29,7 +29,7 @@ agent asks for a country, gets a working connection, and reads the page.
 
 | Tool | What it does | Needs |
 |---|---|---|
-| `nodemaven_build_proxy_url` | Builds a proxy URL with geo targeting encoded in the username — hand it to curl, Playwright, Scrapy or requests | proxy creds |
+| `nodemaven_build_proxy_url` | Builds a proxy URL with geo targeting encoded in the username, ready for curl, Playwright, Scrapy or requests | proxy creds |
 | `nodemaven_check_proxy` | One request through the proxy: exit IP, geo, ISP, latency | proxy creds |
 | `nodemaven_fetch` | Fetches a URL through the proxy, HTML converted to readable text | proxy creds |
 | `nodemaven_list_locations` | Countries, regions, cities, ISPs, zip codes available for targeting | API key |
@@ -41,7 +41,7 @@ Every tool takes `response_format`: `markdown` (default, compact) or `json`
 ## Install
 
 ```bash
-git clone https://github.com/artirain/nodemaven-mcp
+git clone https://github.com/Artirain/nodemaven-mcp
 cd nodemaven-mcp
 pip install -e .
 ```
@@ -52,8 +52,8 @@ Requires Python 3.10+.
 
 Two independent sets of credentials, both from the [NodeMaven dashboard](https://dashboard.nodemaven.com):
 
-- `NODEMAVEN_API_KEY` — Profile -> API Key. Used by the location and usage tools.
-- `NODEMAVEN_PROXY_USERNAME` / `NODEMAVEN_PROXY_PASSWORD` — Proxy Setup. Used by
+- `NODEMAVEN_API_KEY` - Profile -> API Key. Used by the location and usage tools.
+- `NODEMAVEN_PROXY_USERNAME` / `NODEMAVEN_PROXY_PASSWORD` - Proxy Setup. Used by
   everything that sends traffic through the proxy.
 
 You can set only one set; tools that need the other say so instead of failing
@@ -89,7 +89,7 @@ claude mcp add nodemaven \
 }
 ```
 
-A local `.env` in the working directory also works — see `.env.example`.
+A local `.env` in the working directory also works - see `.env.example`.
 Environment variables always win over the file.
 
 ## Use it
@@ -112,12 +112,12 @@ truncated to 200 KB by default so it does not flood the context.
 
 **Keep one identity across a flow**
 
-> "Log into the demo account and walk through checkout — same IP the whole time."
+> "Log into the demo account and walk through checkout, same IP the whole time."
 
 Pass the same `session_id` (4-10 alphanumerics) on every call and NodeMaven pins
 the exit IP; drop it and the IP rotates per request.
 
-Targeting spellings matter — `nodemaven_list_locations(level="cities", country="de")`
+Targeting spellings matter. `nodemaven_list_locations(level="cities", country="de")`
 gives the exact values NodeMaven accepts, which is the difference between a working
 pool and an empty one.
 
@@ -140,9 +140,9 @@ username:
 acct-country-us-region-california-city-los_angeles-isp-t_mobile_usa-sid-ab12cd-filter-medium
 ```
 
-Building that string — normalizing `"Los Angeles"` to `los_angeles`, rejecting a
+Building that string - normalizing `"Los Angeles"` to `los_angeles`, rejecting a
 session id that would silently disable stickiness, validating the port against
-the range for the chosen protocol — is pure logic, so it is covered by tests that
+the range for the chosen protocol - is pure logic, so it is covered by tests that
 never touch the network.
 
 **No parser dependency.** HTML-to-text runs on `html.parser` from the standard
@@ -158,7 +158,7 @@ ruff check .
 
 CI runs the suite on Python 3.10, 3.11 and 3.12.
 
-Contributions welcome — see [CONTRIBUTING.md](CONTRIBUTING.md).
+Contributions welcome - see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 

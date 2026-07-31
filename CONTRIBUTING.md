@@ -1,12 +1,12 @@
 # Contributing
 
-Thanks for taking the time. This project is small on purpose — the bar is that
+Thanks for taking the time. This project is small on purpose: the bar is that
 every change stays easy to read a year from now.
 
 ## Setup
 
 ```bash
-git clone https://github.com/artirain/nodemaven-mcp
+git clone https://github.com/Artirain/nodemaven-mcp
 cd nodemaven-mcp
 pip install -e ".[dev]"
 pytest -q
@@ -38,4 +38,4 @@ pytest -q
 
 Open an issue with the tool you called, the arguments (redact credentials), and
 what you expected. If it involves live proxy behaviour, include the country and
-whether a session id was used — targeting is the usual culprit.
+whether a session id was used - targeting is the usual culprit.
