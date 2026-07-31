@@ -1,0 +1,55 @@
+[project]
+name = "nodemaven-mcp"
+version = "0.1.0"
+description = "MCP server that lets AI agents route web requests through NodeMaven residential and mobile proxies"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Artur", email = "ansre1313@gmail.com" }]
+keywords = ["mcp", "model-context-protocol", "proxy", "nodemaven", "scraping", "llm", "agents"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: Proxy Servers",
+]
+dependencies = [
+    "mcp>=1.2.0",
+    "httpx[socks]>=0.27",
+    "pydantic>=2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "ruff>=0.5",
+]
+
+[project.scripts]
+nodemaven-mcp = "nodemaven_mcp.__main__:main"
+
+[project.urls]
+Homepage = "https://github.com/artirain/nodemaven-mcp"
+Issues = "https://github.com/artirain/nodemaven-mcp/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/nodemaven_mcp"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
