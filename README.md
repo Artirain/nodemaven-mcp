@@ -1,3 +1,5 @@
+<img src="docs/img/banner.png" alt="nodemaven-mcp" width="100%">
+
 # nodemaven-mcp
 
 [![CI](https://github.com/Artirain/nodemaven-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/Artirain/nodemaven-mcp/actions/workflows/ci.yml)
@@ -131,6 +133,31 @@ the exit IP; drop it and the IP rotates per request.
 Targeting spellings matter. `nodemaven_list_locations(level="cities", country="de")`
 gives the exact values NodeMaven accepts, which is the difference between a working
 pool and an empty one.
+
+## See what it actually does
+
+A tool call is easy to trust and hard to verify. `examples/traffic_dashboard.py`
+runs a local forward proxy with a live dashboard, so you can point the server at
+it and watch every hop it makes:
+
+```bash
+python examples/traffic_dashboard.py     # proxy on :8080, dashboard on :8099
+```
+
+```bash
+NODEMAVEN_PROXY_HOST=127.0.0.1
+NODEMAVEN_HTTP_PORT=8080
+```
+
+![Dashboard showing proxy hops with decoded targeting](docs/img/dashboard.png)
+
+Each row is a real network request. The **route** column is decoded from the proxy
+username, which is exactly the string NodeMaven uses to choose the exit IP - so you
+can confirm that `country="de", city="Munich"` in a tool call really did leave your
+machine as `DE / MUNICH`, and that a `session_id` stayed pinned across calls.
+
+The dashboard is a development aid: it accepts any credentials and does not
+encrypt anything. Do not put it on a network you share.
 
 ## Design notes
 

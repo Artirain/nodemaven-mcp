@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="1200" height="420" role="img" aria-label="nodemaven-mcp: give your AI agent a residential IP">
+  <defs>
+    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f5a524" stop-opacity="0"/>
+      <stop offset="0.35" stop-color="#f5a524" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#5ad1c8" stop-opacity="0.9"/>
+    </linearGradient>
+    <style>
+      .mono { font-family: 'Cascadia Mono','Consolas','SF Mono',ui-monospace,monospace; }
+      .disp { font-family: 'Bahnschrift','DIN Alternate','Segoe UI',Helvetica,Arial,sans-serif; }
+      .eyebrow { font-size: 13px; letter-spacing: 4.5px; fill: #7b8899; }
+      .title { font-size: 62px; font-weight: 600; letter-spacing: 2px; fill: #e9edf2; }
+      .accent { fill: #f5a524; }
+      .lede { font-size: 19px; fill: #b6c0cc; letter-spacing: .3px; }
+      .k { font-size: 10px; letter-spacing: 2.6px; fill: #6f7d8e; }
+      .v { font-size: 21px; letter-spacing: 1px; fill: #e9edf2; }
+      .vc { font-size: 21px; letter-spacing: 1px; fill: #f5a524; }
+      .vs { font-size: 21px; letter-spacing: 1px; fill: #5ad1c8; }
+      .node { font-size: 12px; letter-spacing: 2.4px; fill: #8d99a8; }
+      .node-on { fill: #f5a524; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="420" fill="#0c1014"/>
+  <rect x="0" y="0" width="1200" height="3" fill="url(#fade)"/>
+
+  <!-- horizon lines, faint, like a board -->
+  <g stroke="#161d25">
+    <line x1="72" y1="118" x2="780" y2="118"/>
+    <line x1="72" y1="286" x2="780" y2="286"/>
+  </g>
+
+  <text class="mono eyebrow" x="72" y="80">MODEL CONTEXT PROTOCOL SERVER</text>
+
+  <text class="disp title" x="72" y="186">node<tspan class="accent">maven</tspan>-mcp</text>
+
+  <text class="mono lede" x="72" y="232">Give your AI agent a residential IP.</text>
+  <text class="mono lede" x="72" y="262" fill="#7b8899">Pick an exit country, verify what the site sees, pull the page.</text>
+
+  <!-- decoded targeting: the signature element -->
+  <g transform="translate(72,320)">
+    <g>
+      <rect x="0" y="0" width="176" height="66" fill="#0f151b" stroke="#222c37"/>
+      <rect x="0" y="0" width="2" height="66" fill="#8a6320"/>
+      <text class="mono k" x="18" y="26">ACCOUNT</text>
+      <text class="disp v" x="18" y="52">demoacct</text>
+    </g>
+    <g transform="translate(190,0)">
+      <rect x="0" y="0" width="104" height="66" fill="#0f151b" stroke="#222c37"/>
+      <rect x="0" y="0" width="2" height="66" fill="#f5a524"/>
+      <text class="mono k" x="18" y="26">COUNTRY</text>
+      <text class="disp vc" x="18" y="52">de</text>
+    </g>
+    <g transform="translate(308,0)">
+      <rect x="0" y="0" width="150" height="66" fill="#0f151b" stroke="#222c37"/>
+      <rect x="0" y="0" width="2" height="66" fill="#8a6320"/>
+      <text class="mono k" x="18" y="26">CITY</text>
+      <text class="disp v" x="18" y="52">munich</text>
+    </g>
+    <g transform="translate(472,0)">
+      <rect x="0" y="0" width="150" height="66" fill="#0f151b" stroke="#222c37"/>
+      <rect x="0" y="0" width="2" height="66" fill="#2f6f6a"/>
+      <text class="mono k" x="18" y="26">SID</text>
+      <text class="disp vs" x="18" y="52">ab12cd</text>
+    </g>
+  </g>
+
+  <!-- route: where a request travels -->
+  <g transform="translate(830,150)">
+    <line x1="14" y1="0" x2="14" y2="196" stroke="#222c37" stroke-width="2"/>
+
+    <circle cx="14" cy="0" r="5" fill="#0c1014" stroke="#6f7d8e" stroke-width="2"/>
+    <text class="mono node" x="44" y="5">AGENT</text>
+
+    <circle cx="14" cy="65" r="5" fill="#0c1014" stroke="#6f7d8e" stroke-width="2"/>
+    <text class="mono node" x="44" y="70">MCP TOOL CALL</text>
+
+    <circle cx="14" cy="130" r="7" fill="#f5a524"/>
+    <text class="mono node node-on" x="44" y="135">NODEMAVEN GATE</text>
+
+    <circle cx="14" cy="196" r="5" fill="#0c1014" stroke="#6f7d8e" stroke-width="2"/>
+    <text class="mono node" x="44" y="201">TARGET SITE</text>
+  </g>
+</svg>

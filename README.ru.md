@@ -1,3 +1,5 @@
+<img src="docs/img/banner.png" alt="nodemaven-mcp" width="100%">
+
 # nodemaven-mcp
 
 [![CI](https://github.com/Artirain/nodemaven-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/Artirain/nodemaven-mcp/actions/workflows/ci.yml)
@@ -132,6 +134,32 @@ NodeMaven закрепит exit IP; уберёте его - IP будет мен
 Написание локаций важно. `nodemaven_list_locations(level="cities", country="de")`
 отдаёт точные значения, которые принимает NodeMaven, - именно это отличает рабочий
 пул от пустого.
+
+## Посмотреть, что происходит на самом деле
+
+Вызову инструмента легко поверить и трудно его проверить. `examples/traffic_dashboard.py`
+поднимает локальный прокси с живой панелью: направьте сервер на него и смотрите
+каждый сетевой хоп.
+
+```bash
+python examples/traffic_dashboard.py     # прокси на :8080, панель на :8099
+```
+
+```bash
+NODEMAVEN_PROXY_HOST=127.0.0.1
+NODEMAVEN_HTTP_PORT=8080
+```
+
+![Панель с хопами прокси и расшифрованным таргетингом](docs/img/dashboard.png)
+
+Каждая строка - реальный сетевой запрос. Колонка **route** расшифрована из
+username прокси, то есть именно из той строки, по которой NodeMaven выбирает
+exit IP. Так видно, что `country="de", city="Munich"` в вызове инструмента
+действительно ушли с машины как `DE / MUNICH`, а `session_id` держал один и тот
+же IP между вызовами.
+
+Панель - инструмент для разработки: она принимает любые доступы и ничего не
+шифрует. Не выставляйте её в общую сеть.
 
 ## Решения в дизайне
 
