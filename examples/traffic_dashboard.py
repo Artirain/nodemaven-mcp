@@ -135,7 +135,7 @@ async def handle_proxy(client_reader, client_writer) -> None:
             publish(
                 {
                     **event,
-                    "status": "closed",
+                    "status": "done",
                     "bytes": counter.get("down"),
                     "ms": round((time.perf_counter() - started) * 1000),
                 }
@@ -226,7 +226,7 @@ PAGE = """<!doctype html>
         color:var(--mute);font-size:11px}
   .chip b{color:var(--text);font-weight:500}
   .st{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
-  .st.open{color:var(--cyan)} .st.error{color:#ff6b6b}
+  .st.open{color:var(--cyan)} .st.done{color:#7fbf8f} .st.error{color:#ff6b6b}
   .num{color:var(--mute);text-align:right}
   tbody tr:first-child td{animation:land .7s ease-out}
   @keyframes land{from{background:rgba(245,165,36,.09)}to{background:transparent}}
