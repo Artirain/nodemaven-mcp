@@ -4,6 +4,8 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
+**English** | [Русский](README.ru.md)
+
 **Give your AI agent a residential IP.** An [MCP](https://modelcontextprotocol.io)
 server that lets Claude Code, Claude Desktop, Cursor or any other MCP client route
 web requests through [NodeMaven](https://nodemaven.com) residential and mobile
