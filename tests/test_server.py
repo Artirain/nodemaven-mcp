@@ -123,7 +123,11 @@ async def test_usage_errors_are_forwarded(credentials, monkeypatch):
     assert "429" in result and result.startswith("Error:")
 
 
-@pytest.mark.parametrize("country", ["usa", "u"])
-async def test_country_length_is_validated_by_schema(credentials, country):
-    with pytest.raises(ValueError):
+@pytest.mark.parametrize("country", ["germany", "u", "12", ""])
+async def test_country_rejection_tells_the_agent_what_to_send(credentials, country):
+    with pytest.raises(ValueError, match="two-letter ISO code"):
         BuildProxyUrlInput(country=country)
+
+
+async def test_country_is_normalized_to_lowercase(credentials):
+    assert BuildProxyUrlInput(country="DE").country == "de"

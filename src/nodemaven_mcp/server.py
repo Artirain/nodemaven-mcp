@@ -9,7 +9,7 @@ from __future__ import annotations
 from typing import Any
 
 from mcp.server.fastmcp import FastMCP
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from . import api, config, fetch
 from .formatting import (
@@ -19,7 +19,7 @@ from .formatting import (
     paginated,
     render,
 )
-from .proxy import ProxyTarget, ProxyTargetingError, build_target
+from .proxy import COUNTRY_RE, ProxyTarget, ProxyTargetingError, build_target
 
 mcp = FastMCP("nodemaven_mcp")
 
@@ -38,9 +38,20 @@ class TargetingInput(BaseModel):
     country: str = Field(
         ...,
         description="Two-letter ISO country code for the exit IP (e.g. 'us', 'de', 'br').",
-        min_length=2,
-        max_length=2,
+        max_length=64,
     )
+
+    @field_validator("country")
+    @classmethod
+    def validate_country(cls, value: str) -> str:
+        """Reject full country names with a message that says what to send instead."""
+        if not COUNTRY_RE.match(value):
+            raise ValueError(
+                f"country must be a two-letter ISO code, not {value!r}. "
+                "Use 'de' for Germany, 'us' for the United States, 'br' for Brazil; "
+                "call nodemaven_list_locations(level='countries') to look a code up."
+            )
+        return value.lower()
     region: str | None = Field(
         default=None,
         description="State or region to narrow the pool (e.g. 'california'). Optional.",

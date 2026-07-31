@@ -98,6 +98,11 @@ claude mcp add nodemaven \
 A local `.env` in the working directory also works - see `.env.example`.
 Environment variables always win over the file.
 
+**On Windows**, give the absolute path to `python.exe` rather than bare `python`.
+If Python came from the Microsoft Store, the `python` on your PATH is an app
+execution alias that MCP clients cannot spawn, and the server silently never
+appears. `python -c "import sys; print(sys.executable)"` prints the path to use.
+
 ## Use it
 
 Three things worth asking your agent, once it is connected:
@@ -158,7 +163,7 @@ library. The dependency list is `mcp`, `httpx` and `pydantic`.
 
 ```bash
 pip install -e ".[dev]"
-pytest -q          # 57 tests, no network, no credentials needed
+pytest -q          # 60 tests, no network, no credentials needed
 ruff check .
 ```
 
