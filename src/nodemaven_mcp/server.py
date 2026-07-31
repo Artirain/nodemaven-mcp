@@ -52,6 +52,7 @@ class TargetingInput(BaseModel):
                 "call nodemaven_list_locations(level='countries') to look a code up."
             )
         return value.lower()
+
     region: str | None = Field(
         default=None,
         description="State or region to narrow the pool (e.g. 'california'). Optional.",
